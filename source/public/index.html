@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Key Runner 13K</title>
+    
+    <style>
+        html {
+            background: #000;
+            text-align: center;
+        }
+        canvas {
+            background: #000;
+            margin-top: 130px;
+            image-rendering: -moz-crisp-edges;         /* Firefox */
+            image-rendering: -webkit-crisp-edges;      /* Webkit */
+            -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+            image-rendering: pixelated;                /* Chrome */
+            border: 1px solid white;
+            transform: scale(3)
+        }
+        img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAA8BAMAAABcGK/2AAAALVBMVEUAAAAZECjw0699UT4mMVTmPj5hMy/6p1+rgGUXZUwAAACDMSlGr0VFicSewujfotxbAAAAAXRSTlMAQObYZgAAAz1JREFUSMftlr1qG0EQx31vsCOd5JjYhRabGIcU4oLB6ZTMFSksSLgtLTCGPEAa96ryAG4OhAvnCezWVUglOAIOSal3yXwszMlytJVJ4UwzM/ub/c/AHsdsPKoBuBS3YAVkAJvnLsktULM8OydzSW6BmOXkP3vv0jwGNppdPPBXLs01sFEtf8E+zTWwUS33ZC7BwQrjaJbDJhckeIcPNludLM/yMuDbwRqOIYAogR+AdIoFPQzgKI0CG8xdi2PkGCYIUanT7lRiKfW9UI2ABQPXGcdyQp45C0mnCXcCHkkFPAsDFfzkfC+gPGNelcJzHzgnfkJclRCIk5A8d6/yDJ6/utvxKlCR5/Oxch8WykE4gHbu7IUw4IKdcOK5wLvslgt4VBGgxsJ/L5QDcyq4XtyRJ4GFCGSdATAAcJmMfHO3AOks95a5HNx2XrIH8ACc34AANRHoyGTEnXGzTCYha7slDs+v7/EnY0CW4hasguwTmUtxC9QsJ39WFC7NLYhmF98UX12aa2Cj2sVD9mmugY1qeUHmEhysMI5mOfS5IMG7fNBvdbI8257XzffhGt7UNYgSFEOQTrFgq6nBURoFNpi7Fm8ib+rLBqJSt91p3sylfquefQMWrLnOeDO/JM+chaTTJXcCHkkFChYGKnjH+VHdyDNuz+bCt4uac+IXxFWpAeIkJM+9NSsY9F+P8kIFZuT5/IfyokblIBxAO3eP6nrIBXl9waBfuEyejUcVAWos/D0qB+ZUcIoj8iSAIpB1h0DAfmlnIwTpTPdWOb9v95A9QKFf2ln7lyUCXZmMuDNulskkZG23xKF/usSf0C/t3/8Tv5C5FLdAzXL23rt1fCrcgmh2cXp1YEItPo1cNxYNbFS7OGVvuXKrz/bVa2Cj2kVq5C03vv/wmhdHs4vwjAskX+beuK55HLSVNc96FYaPgzU8ID685uUBZY1TgdU1L0QecBwgKnXanapQSX2O5QdgQeQ646Eak2fOQtJpzJ2AR1IBXfOoQNa4XQy6pZWV8J5HzokfE1elAMRJSH9Zpa15KlCS5/OJco/31jzt3NlF1DUPj5fWPB5VBKix8F9/WfN2F7h2zcv/r3mPZX8AtMGFcVF3kIAAAAAASUVORK5CYII=" id="c">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAACABAMAAACvqntYAAAALVBMVEVMotQ35l0VXFCRxO/3bkgQlFlsmOb6rmsZECj67MO9V0jbwKSzJzj6yjz1WEnNHXU8AAACnklEQVRo3uzRQQ6DMAxEUZ9lkDhAI3EgkHz/I7RNFyPbqiIKLKjmLZvEP6EmIiIiIiIicp52Mcvu94KW3O8TZfoP/i3gblO7jL8Z8Fvige77cf+wvmVx31q0OH+rQGyk8Qxg9pe6zkS5ejWlyzHQxYLTNp7OBseXADgrbYjjB3g6BvgGbqhvAMZmJwb4Bo7PBdC+gpW1KowfCkcBK2sVdgoHQwDHp/NjrOisxmnFUQzUAs5hyOZw8TMDdLfAsxszRm0jCKPwXOEN/AfQwEJEQk4hcP0LXuNzBAzpUgRUBwxZRLqE9IEURl0gXUiVJpDcwOQMWY8wj10Z2bveH2x/zZuBQR9vtItmtOkoJSpTecaOTYnKtHnLOorKRAIwMioTUWFUJgTzKAW5QEQInu8WmgQIcrt7r9l0gRHgzYLf55BAK8dCN4cQywtCAq0ci7nhRjIdEmhlBI/0PRASGAFDx+nZPHwaCOgAAdjHVeXk1Wo63ee/9qEA+wan12tW0zlRAQmusIACPQF91gKHgoACA0FAgd5jCvt8NgsqIAEsqIAaBHwDEgQWUIOQAhJEFZAgqgBScAEJOBP+sH7R6BABAiMmQof5LQIjbHIBI3jQwI7tz9jzGeGHgsH5qz+bej5LEM7jtd0wRRBAjjm+i+W7gj0S6F4y5bmla2ye2227GAp0LzkG/Q5e5vZv6wOB7iVH4Z3el7z7dSDQvWQkqqWdzm371VEWPYHuJaOxnuDlvwWalp53XwaCTMf9yT8vvwEkltuLNxLMR/7x53sdLD+0HiHAi0vuTdvzEIF2uiEgQRzJsCcqkzlAGKIywevYozI53EC3qEwEYQSjMtFJozEqU8PKOiiZSp00JSa5Tt1oXdalxGQVNKUSks3T+Hs/lv+b1pLNE64wgwAAAABJRU5ErkJggg==" id="b">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoAgMAAABIhNa2AAAADFBMVEUAAAD/8egZECjmPlI3WAPOAAAAAXRSTlMAQObYZgAAAYhJREFUOMvVkjFuwlAQRFdbxT4FDZbMff6PbQnJjSVDT7/iDkaIyo0R/vfJfTK72cTCCk26bDEsfjsjjIb+PG8vCasUtm5+IZn84OsS5GSNfeVnfF/hhZQQDrrxNU+OnUCGFt9OxySUxakWunNS7IT3DUAIsaXtRwjCYa4FRiccQk88hACMIwThxoxGaAoR1/osH6AapMbkJEMuBJi2cW4ZD9VYO2HLTZP+wsgt5KLGIF8kO2ArKFPc00gcIzaT44CIMyQnBt6K/TkPIr4B5wLCYq8PH+30kyuVrldtIGZahkeVJL6q6V/P5iURL5L3cEW4XXCxBDlZY1/lGd+e8UK4J+9qGgtxvJAsEqd5j2J0DTqW5OYYBMt0kgwts968V9wdg5jRCJXePzzDUYUbBKnRCDrceGehcSQLSjAaQa7XUbtVEXAj3MEI4hXOmlQBi7b/Mth5YwTbATetvk1OJfAwCERv4qxyBhYav2u4Kwj4LiCMWvcs8Pk8vJllDZnEDKvJxZuKRQ0+n1GGoBXdXbFtAAAAAElFTkSuQmCC" id="r">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIYAAAAoBAMAAADJQZ88AAAAG1BMVEUAAAAFDCMAlen/8egSTon6rmsdN2v3bki9V0iSqRQQAAAAAXRSTlMAQObYZgAAAdVJREFUSMellMFqwzAMhts3sErLznOhD9DQBxiM3UcJ9JoyfN9pu+Yw8GPvlyxXi5YVnP20MV9lKV8c6MqHZhNWDVnTfFpm0K6XUFleK7ZoaO9Fe0dFatI4d6dz1+e+Q06XL0Vq0UBvX3qRPitmWqbBj1A1MrVo2CNgRlbMIzVpQMBOg1E0QpMGBEyjF4TG8tPo4dGLxuKXglmgvFRDmjEL1KiByCNIoIG0aax32qujMs9q0sCMhw9JLstnFoYFrRbPGMsMotA+Y9QZJMyH0T6DyvJeZrQcBi2NPSv9J1UjSh43uk6R7qNqKA6x5DrBw+YuUtXokOPhui/rBGOKgL2hq5JqWJXXmc3R0FUT3TRghSruVzQib47cbBqGtjmmREUDGLWKT61Gbo5Vw9A2s8ZA86chmxOY74N+1jC0zRFMob4UsEpGrdp9j7dmTDINrppGjChUyd+nwc2m4U8juJeC35JWzdlrIHdOA7+lWrXNXoPRa0RJwlc0DMVZMQm5qmgg9GMzayj6zcKuWjQQepa8vPElkaEkKaat0OCqrOFnDH/NGMoMVy0aNmPLFwqGkkGRtkKuKho242nLF5ogUrHMIF8NM/9gAdiSuX9SQ5cyO7iqanwDaOR03dqf4wYAAAAASUVORK5CYII=" id="t">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAUBAMAAAAToVI7AAAAElBMVEUAAAD4+v8ZECi4xOGBiLNtYopr4sXzAAAAAXRSTlMAQObYZgAAAFRJREFUGNPNzLENgDAQQ1HrNkjEAIcVFgAxAAj2X4niHOWKDMCvrFcYYOQYWYlqsrUon5kxytaXD2Mf9ffWtJZk2xO92Y7onNolu0HZzqYXwqhA5R9iGCIsyxX0WwAAAABJRU5ErkJggg==" id="k">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAALAQMAAAAtNL04AAAABlBMVEUAAADT7fB8xU0bAAAAAXRSTlMAQObYZgAAADZJREFUCNdjYPjDAATM/xuAJPv/A2DyPph8/4CBwfr/++8MDPX/7/9+wPAfCD4gkQ8Y6oFkAwB48yMH0H/x4AAAAABJRU5ErkJggg==" id="c1">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAGAQMAAAD9rPzjAAAABlBMVEUAAADT7fB8xU0bAAAAAXRSTlMAQObYZgAAACFJREFUCNdjYGA/wMA//wOD/f0fDPX7/zD8//+Hof7/DwB1QQwmmosobgAAAABJRU5ErkJggg==" id="c2">
+    
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAeAgMAAADFmn8KAAAADFBMVEUAAAAAAAD///8AAADFTF0nAAAAAnRSTlMAM8lDrC4AAAB6SURBVBjTY8AD+P9DwQEgx2oVFGxA4zC/gnHWMzCwo3L27d+/a/fq/bvAnNe7du3aDSQgHJDMbmSZ9bugenbt2g/VgzANL4e1Cu4cNA5j/P//r/bDvCAaGv5qb2hoaAgDOgdk4B6Ex+NWHcDFWY8UPvEfcHG+OjCQBAAcc4UtCCj+cgAAAABJRU5ErkJggg==" id="o">
+    
+    <canvas width=192 height=128></canvas>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="shared.js"></script>
+    <script src="kontra.js"></script>
+    <script src="g.js"></script>
+    
+</body>
+</html>
